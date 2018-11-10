@@ -1,2 +1,2 @@
 # 5Racketeers
-We don't use Racket here(Boston Hacks 2018 )
+We don't use Racket here, we use BSL (Boston Hacks 2018 )
