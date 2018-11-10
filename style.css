@@ -18,6 +18,7 @@ body {
     padding-left: 20px;
     padding-top: 10px;
     vertical-align: middle;
+    overflow: hidden;
 
 }
 
@@ -90,29 +91,28 @@ html, body {
 }
 
 .navigation {
-    
-    margin-top: 10px; 
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; font-size: 24px;
     background-color: white;
     text-align: center;
     vertical-align: middle;
-    width: 40%;
-    height: 50%;
+    width: 400px;
+    height: 80%;
     float: right;
+    margin-right: 4%;
+    margin-top: 5px;
 
 }
 
 .navigation-div {
     margin: 0;
-    width: 50%;
-    height: 100%;
-    float:left;
+    width: 100px;
+    height: 50%;
+    float: left;
     text-align: center;
     vertical-align: middle;
-    margin-top: 18px;
 }
 
-.navigation a{
+.navigation-div a{
 
     text-decoration: none;
     font-size: 20px;
@@ -121,11 +121,9 @@ html, body {
    /* background-color: #2e2e2e;*/
     top: 10px;
     padding-bottom: 9px;
-    padding-left: 12px;
-    padding-right: 12px;
   }
 
-.navigation a:hover {
+.navigation-div a:hover {
     color: #808080;
       text-shadow: 0 7px 7px rgba(0, 0, 0, 0.5);
     }
