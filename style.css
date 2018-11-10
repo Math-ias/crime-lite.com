@@ -1,5 +1,6 @@
 body {
-
+    min-height: 100%;
+    min-width: 100%;
 }
 
 .header {
@@ -21,14 +22,19 @@ body {
 }
 
 .main {
-    min-height: 320px;
+    min-height: 600px;
     position: relative;
-    padding-top: 10px;
+    padding-top: 60px;
     padding-bottom: 20px;
     width: 100%;
-    background-color: gray;
+    background-color: white;
     top: 0;
     left: 0;
+}
+
+
+.contents {
+    
 }
 
 #map {
@@ -39,3 +45,4 @@ body {
     margin: 0;
     padding: 0;
   }
+
