@@ -8,7 +8,7 @@ body {
     box-shadow: 0 2px 4px 1px rgba(0,0,0,0.1);
     position: fixed;
     width: 100%;
-    height: 60px;
+    height: 61px;
     top: 0;
     left: 0;
     z-index: 100;
@@ -25,20 +25,26 @@ body {
     min-height: 600px;
     height: auto;
     position: relative;
-    padding-top: 55px;
+    padding-top: 61px;
     padding-bottom: 20px;
     width: 100%;
     background-color: white;
     top: 0;
     left: 0;
+    display: flex;
 }
 
 
 .contents {
-
+    background-color: white;
     position: relative;
-    padding: 15px 40px 10px 40px;
-    min-height: 100%;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 85%;
+    margin: 0 auto;
+    flex-grow: 0;
 }
 
 .footer {
@@ -48,7 +54,7 @@ body {
 
 #map {
     height: 400px;
-    width: 600px;
+    width: 100%;
   }
 
 html, body {
