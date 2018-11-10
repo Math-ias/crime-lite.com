@@ -4,6 +4,9 @@ body {
 }
 
 .header {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; font-size: 24px;
+    color: slategray;
+    text-align: left;
     background-color: white;
     box-shadow: 0 2px 4px 1px rgba(0,0,0,0.1);
     position: fixed;
@@ -12,13 +15,29 @@ body {
     top: 0;
     left: 0;
     z-index: 100;
+    vertical-align: center;
+    /** float: left; */
+    margin: 0px auto 0px auto;
+    
 }
+
+/*ul {
+    vertical-align: top;
+    text-align: left;
+    width: 2000px;
+    position: relative;
+    left: 20px;
+    top: 10px;
+    
+    display: inline-block;
+}*/
 
 .logo {
     
     position: relative;
     left: 20px;
     top: 10px;
+    margin-right: 5%;
 }
 
 .main {
