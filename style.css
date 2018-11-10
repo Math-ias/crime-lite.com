@@ -23,8 +23,9 @@ body {
 
 .main {
     min-height: 600px;
+    height: auto;
     position: relative;
-    padding-top: 60px;
+    padding-top: 55px;
     padding-bottom: 20px;
     width: 100%;
     background-color: white;
@@ -34,16 +35,25 @@ body {
 
 
 .contents {
-    min-height: 600px;
+
+    position: relative;
+    padding: 15px 40px 10px 40px;
+    min-height: 100%;
 }
+
+.footer {
+    
+}
+
 
 #map {
     height: 400px;
     width: 600px;
   }
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-  }
+}
 
