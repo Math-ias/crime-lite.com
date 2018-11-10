@@ -33,6 +33,7 @@ body {
     left: 0;
 }
 
+
 .contents {
     position: relative;
     padding: 15px 40px 10px 40px;
@@ -42,3 +43,13 @@ body {
 .footer {
     
 }
+
+#map {
+    height: 100%;
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
