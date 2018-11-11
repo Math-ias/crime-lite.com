@@ -1,3 +1,7 @@
+      function updateMap(){
+        initMap();
+      }
+      
       function initMap() {
         var map = new google.maps.Map(document.getElementById('maplookup'), {
           zoom: 17,
@@ -5,9 +9,9 @@
         });
         var geocoder = new google.maps.Geocoder();
 
-        document.getElementById('address-submit').addEventListener('click', function() {
+        document.getElementById("address-submit").addEventListener("submit", function() {
           geocodeAddress(geocoder, map);
-        });
+        }, false);
       }
 
       function geocodeAddress(geocoder, resultsMap) {
