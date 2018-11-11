@@ -27,7 +27,7 @@
             var lat = results[0].geometry.location.lat();
             document.getElementById("crimetag").innerHTML = encodeGeoHash(lat, lon);
           } else {
-            alert('Error: ' + status);
+            alert('Geocode was not successful for the following reason: ' + status);
           }
         });
       }
