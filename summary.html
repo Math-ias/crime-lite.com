@@ -30,7 +30,7 @@
 
     <div class="main">
       <div class="contents">
-          <div id="floating-panel" class="map-control">
+          <div id="floating-panel">
             <button onclick="toggleCells()">Toggle blocks</button>
             <br>
             <form> Crimes <input type="radio" onchange="recomputeOpacity()" name="gender" value="crime" id="crime">
@@ -38,7 +38,7 @@
               Median Distance <input onchange="recomputeOpacity()" type="radio" name="gender" value="median" id="median">
             </form>
           </div>
-          <div id="overlay"></div>
+
           <div id="map"></div>
           <script asyn defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqwbkkPdWIwpmJ1TXOP-38zIOW5uahJAQ&callback=initMap">
           </script>
