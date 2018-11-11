@@ -3,7 +3,7 @@
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
 
-      var  map, heatmap, streetLightMap;
+      var map, heatmap;
       //import { crime } from './crimes.js'
       //crimes.js var crime;
       function initMap() {
@@ -12,27 +12,10 @@
           center: {lat: 42.361145, lng: -71.057083},
           mapTypeId: 'satellite'
         });
-        var marker, i;
 
-	    for (i = 0; i < lights.length; i++) {
-		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(lights[i], lights[i+1]),
-            map: map,
-            icon: 'pixel.png',
-		});
-
-		google.maps.event.addListener(marker, 'click', (function (marker, i) {
-			return function () {
-				infowindow.setContent(locations[i][0]);
-				infowindow.open(map, marker);
-			}
-		})(marker, i));
-	}
-          
         heatmap = new google.maps.visualization.HeatmapLayer({
           data: getPoints(crimes),
           map: map
-          
         });
       }
 
@@ -57,7 +40,6 @@
           'rgba(191, 0, 31, 1)',
           'rgba(255, 0, 0, 1)'
             ];
-            
         heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
       }
 
@@ -73,7 +55,6 @@
       // Heatmap data: 500 Points
       var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
       var newa = [];
-      var newb = [];
       
       function getPoints(arrayInput) {
         for (var i = 0; i < arrayInput.length; i = i + 2) {
@@ -81,12 +62,4 @@
              newa.push(thing);
         }
         return newa;
-      }
-
-      function plotPoints(arrayInput) {
-        for (var i = 0; i < arrayInput.length; i = i + 2) {
-              var thing = new google.maps.LatLng(arrayInput[i], arrayInput[i+1]);
-              newb.push(thing);
-        }
-        return newb;
       }

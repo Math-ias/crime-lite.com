@@ -1,13 +1,8 @@
-// This example requires the Visualization library. Include the libraries=visualization
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
-
-      var map, heatmap;
+var map, heatmap;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
-
           center: {lat: 42.361, lng: -71.057},
          //mapTypeIds: google.maps.MapTypeId.SATELLITE
          //mapTypeControlStyle: { style: DEFAULT},
@@ -18,21 +13,10 @@
 
         });
 
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var icons = {
-          parking: {
-            name: 'Parking',
-            icon: iconBase + 'parking_lot_maps.png'
-          },
-          library: {
-            name: 'Library',
-            icon: iconBase + 'library_maps.png'
-          },
-          info: {
-            name: 'Info',
-            icon: iconBase + 'info-i_maps.png'
-          }
-        };
+        heatmap = new google.maps.visualization.HeatmapLayer({
+            data: getPoints(crimes),
+            map: map
+          });
         
 
          // Add a style-selector control to the map.
@@ -48,11 +32,7 @@
            map.setOptions({styles: styles[styleSelector.value]});
          });
 
-         heatmap = new google.maps.visualization.HeatmapLayer({
-            data: getPoints(crimes),
-            map: map
-          });
-
+         
 
       }
 
@@ -90,18 +70,6 @@
 
      // Heatmap data: 500 Points
       // Heatmap data: 500 Points
-
-      // Heatmap data: 500 Points
-      var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
-      var newa = [];
-
-      function getPoints(arrayInput) {
-        for (var i = 0; i < arrayInput.length; i = i + 2) {
-             newa[i]=  new google.maps.LatLng(arrayInput[i], arrayInput[i+1]);
-        }
-        return newa;
-      }
-
       var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
       var newa = [];
       
@@ -113,14 +81,6 @@
         return newa;
       }
 
-      var historicalOverlay;
-
-      var imageBounds = {
-        north: -40.773941,
-        south: 400.712216,
-        east: -174.12544,
-        west: 174.22655
-      };
 // Styles
       var styles = {
         default: null,
@@ -239,142 +199,6 @@
           }}
         ],
 
-        huskymode: [
-            {elementType: 'geometry', stylers: [{color: '#ff0000'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#000000'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#000000'}]},
-            {
-              featureType: 'administrative',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'administrative.land_parcel',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#808080'}]
-            },
-            {
-              featureType: 'administrative.land_parcel',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#000000'}]
-            },
-            {
-              featureType: 'landscape.natural',
-              elementType: 'geometry',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'geometry',
-              stylers: [{color: '#808080'}]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#000000'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry.fill',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#000000'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'road.arterial',
-              elementType: 'geometry',
-              stylers: [{color: '#808080'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#808080'}]
-            },
-            {
-              featureType: 'road.highway.controlled_access',
-              elementType: 'geometry',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'road.highway.controlled_access',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#808080'}]
-            },
-            {
-              featureType: 'road.local',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#000000'}]
-            },
-            {
-              featureType: 'transit.line',
-              elementType: 'geometry',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'transit.line',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#000000'}]
-            },
-            {
-                featureType: 'transit.line',
-                elementType: 'labels.icon',
-                icon: 'husky.png'
-              },
-            {
-              featureType: 'transit.line',
-              elementType: 'labels.text.stroke',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'geometry',
-              stylers: [{color: '#808080'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry.fill',
-              stylers: [{color: '#ff0000'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              icon: 'husky.png',
-              stylers: [{color: '#000000'}]
-            },
-            {
-                featureType: 'all',
-                elementType: 'all',
-                icon: 'husky.png'
-              },
-              {
-                parking: {
-                  icon: 'husky.png'
-                },
-                library: {
-                  icon: 'husky.png'
-                },
-                info: {
-                  icon: 'husky.png'
-                }
-              },
-            {heatmap: {
-              enabled: true
-            }}
-          ],
-
         hiding: [
           {
             featureType: 'all',
@@ -387,5 +211,3 @@
 
       
       
-
-
