@@ -238,7 +238,141 @@
             enabled: true
           }}
         ],
-
+        huskymode: [
+            {elementType: 'geometry', stylers: [{color: '#ff0000'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#000000'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#000000'}]},
+            {
+              featureType: 'administrative',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'administrative.land_parcel',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#808080'}]
+            },
+            {
+              featureType: 'administrative.land_parcel',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'landscape.natural',
+              elementType: 'geometry',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'geometry',
+              stylers: [{color: '#808080'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry.fill',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'road.arterial',
+              elementType: 'geometry',
+              stylers: [{color: '#808080'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#808080'}]
+            },
+            {
+              featureType: 'road.highway.controlled_access',
+              elementType: 'geometry',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'road.highway.controlled_access',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#808080'}]
+            },
+            {
+              featureType: 'road.local',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'transit.line',
+              elementType: 'geometry',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'transit.line',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#000000'}]
+            },
+            {
+                featureType: 'transit.line',
+                elementType: 'labels.icon',
+                icon: 'husky.png'
+              },
+            {
+              featureType: 'transit.line',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'geometry',
+              stylers: [{color: '#808080'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry.fill',
+              stylers: [{color: '#ff0000'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              icon: 'husky.png',
+              stylers: [{color: '#000000'}]
+            },
+            {
+                featureType: 'all',
+                elementType: 'all',
+                icon: 'husky.png'
+              },
+              {
+                parking: {
+                  icon: 'husky.png'
+                },
+                library: {
+                  icon: 'husky.png'
+                },
+                info: {
+                  icon: 'husky.png'
+                }
+              },
+            {heatmap: {
+              enabled: true
+            }}
+          ],
         hiding: [
           {
             featureType: 'all',
