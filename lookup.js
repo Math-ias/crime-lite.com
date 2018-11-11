@@ -20,7 +20,6 @@
               position: results[0].geometry.location
             });
 
-
             var lon = results[0].geometry.location.lng();
             var lat = results[0].geometry.location.lat();
             var geohash = encodeGeoHash(lat, lon);
