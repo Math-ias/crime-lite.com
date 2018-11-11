@@ -1,7 +1,11 @@
+var marker;
+var map;
+var markers;
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('maplookup'), {
+        map = new google.maps.Map(document.getElementById('maplookup'), {
           zoom: 17,
-          center: {lat: 42.341876, lng: -71.091273}
+          center: {lat: 42.341876, lng: -71.091273},
+          mapTypeControl : false
         });
         var geocoder = new google.maps.Geocoder();
 
@@ -15,10 +19,11 @@
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location
             });
+            
 
 
             var lon = results[0].geometry.location.lng();
@@ -58,7 +63,7 @@
           }
         });
       }
-    
+
       function getCellFromGeohash(gh){
         for(var geohash in cells){
           if (geohash==gh){
