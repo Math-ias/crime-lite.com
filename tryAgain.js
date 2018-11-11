@@ -1,65 +1,124 @@
-     
-      // This example requires the Visualization library. Include the libraries=visualization
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+// This example requires the Visualization library. Include the libraries=visualization
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
 
-      var map, heatmap;
-      //import { crime } from './crimes.js'
-      //crimes.js var crime;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 42.361145, lng: -71.057083},
-          mapTypeId: 'satellite'
-        });
+var map, heatmap, polygons;
+//import { crime } from './crimes.js'
+//crimes.js var crime;
 
-        heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(crimes),
-          map: map
-        });
-      }
+function initMap() {
 
-      function toggleHeatmap() {
-        heatmap.setMap(heatmap.getMap() ? null : map);
-      }
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {lat: 42.361145, lng: -71.057083}
+  });
 
-      function changeGradient() {
-        var gradient = [
-          'rgba(0, 255, 255, 0)',
-          'rgba(0, 255, 255, 1)',
-          'rgba(0, 191, 255, 1)',
-          'rgba(0, 127, 255, 1)',
-          'rgba(0, 63, 255, 1)',
-          'rgba(0, 0, 255, 1)',
-          'rgba(0, 0, 223, 1)',
-          'rgba(0, 0, 191, 1)',
-          'rgba(0, 0, 159, 1)',
-          'rgba(0, 0, 127, 1)',
-          'rgba(63, 0, 91, 1)',
-          'rgba(127, 0, 63, 1)',
-          'rgba(191, 0, 31, 1)',
-          'rgba(255, 0, 0, 1)'
-            ];
-        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
-      }
+  polygons = [];
+  windows = {};
 
-      function changeRadius() {
-        heatmap.set('radius', heatmap.get('radius') ? null : 20);
-      }
+  for (var geocode in window.cells) (function (geocode){
+    var cell = window.cells[geocode];
+    var centerlat = cell[0];
+    var centerlon = cell[1];
+    var errorlat = cell[2];
+    var errorlon = cell[3];
+    var numcrimes = cell[4];
+    var lamps = cell[5];
+    var max = cell[6];
+    var min = cell[7];
+    var mediandist = cell[8];
+    var coords = [{lat: centerlat + errorlat, lng: centerlon + errorlon},
+                  {lat: centerlat - errorlat, lng: centerlon + errorlon},
+                  {lat: centerlat - errorlat, lng: centerlon - errorlon},
+                  {lat: centerlat + errorlat, lng: centerlon - errorlon},
+                  {lat: centerlat + errorlat, lng: centerlon + errorlon},];
 
-      function changeOpacity() {
-        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
-      }
 
-      // Heatmap data: 500 Points
-      // Heatmap data: 500 Points
-      var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
-      var newa = [];
-      
-      function getPoints(arrayInput) {
-        for (var i = 0; i < arrayInput.length; i = i + 2) {
-             var thing =  new google.maps.LatLng(arrayInput[i], arrayInput[i+1]);
-             newa.push(thing);
-        }
-        return newa;
-      }
+
+    var polygon = new google.maps.Polygon({
+      paths: coords,
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.05,
+      strokeWeight: 1,
+      fillColor: '#FF0000',
+      fillOpacity: Math.min(1, mediandist / 150),
+      map: map,
+      lamps: lamps,
+      medians: mediandist,
+      numcrimes: numcrimes,
+      geocode: geocode,
+    });
+
+    var infowindow;
+    if (numcrimes >= 1) {
+      infowindow = new google.maps.InfoWindow({
+        content: "This region has the following properties:" +
+                 "<ul><li>Approximately " + numcrimes + " crimes have occured in the past 3 years. </li>" +
+                 "<li>There are " + lamps + " registered street lamps in this area. </li>" +
+                 "<li>The median distance from a streetlamp to any one crime was about "  + mediandist + "meters. </li>" +
+                 "<li>In the worst case, a crime occured approximately " + max + " meters from a streetlamp. </li>" +
+                 "<li>The closest a crime got to a street lamp was approximately " + min + " meters from a lamp.</li></ul>",
+      });
+    }
+    else {
+      infowindow = new google.maps.InfoWindow({
+        content: "This region has the following properties:" +
+                 "<ul><li>Approximately no crimes have occured here.</li>" +
+                 "<li>There are " + lamps + " registered street lamps in this area.</li></ul>",
+      });
+    }
+
+    windows[geocode] = infowindow;
+
+    polygon.addListener('rightclick', function(event) {
+      var win = windows[polygon.geocode];
+      win.setPosition(event.latLng);
+      win.open(map);
+    });
+
+    polygons.push(polygon);
+    //polygon.setPaths(coords);
+    /*marker = new google.maps.Marker({
+    position: new google.maps.LatLng(centerlat,centerlon),
+    map: map,
+    logo: 'logo.png',
+  });*/
+})(geocode);
+
+  /*heatmap = new google.maps.visualization.HeatmapLayer({
+    data: getPoints(window.crimes),
+    map: map
+  });*/
+
+  google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+    document.getElementById('overlay').parentNode.removeChild(document.getElementById('overlay'));
+  });
+
+}
+
+function toggleCells() {
+  for (var i = 0; i < polygons.length; i++) {
+    var polygon = polygons[i];
+    polygon.setVisible(polygon.getVisible() ? false : true);
+  }
+}
+
+function recomputeOpacity() {
+  for (var i = 0; i < polygons.length; i++) {
+    var polygon = polygons[i];
+    var opacity;
+    if (document.getElementById("crime").checked) {
+      opacity = Math.min(1, polygon.numcrimes / 1500);
+    }
+    else if (document.getElementById("lamp").checked) {
+      opacity = Math.min(1, polygon.lamps / 120);
+    }
+    else {
+      opacity = Math.min(1, polygon.medians / 150);
+    }
+
+    polygon.setOptions({
+        fillOpacity: opacity,
+    });
+  }
+}
