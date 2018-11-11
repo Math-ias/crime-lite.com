@@ -6,19 +6,6 @@
       var  map, heatmap, streetLightMap;
       //import { crime } from './crimes.js'
       //crimes.js var crime;
-      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-        var icons = {
-          parking: {
-            icon: iconBase + 'parking_lot_maps.png'
-          },
-          library: {
-            icon: iconBase + 'library_maps.png'
-          },
-          info: {
-            icon: iconBase + 'info-i_maps.png'
-          }
-        };
-
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -31,7 +18,7 @@
 		marker = new google.maps.Marker({
 			position: new google.maps.LatLng(lights[i], lights[i+1]),
             map: map,
-            icon: iconBase + 'parking_lot_maps.png',
+            icon: 'pixel.png',
 		});
 
 		google.maps.event.addListener(marker, 'click', (function (marker, i) {
