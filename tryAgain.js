@@ -10,7 +10,8 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
-    center: {lat: 42.361145, lng: -71.057083}
+    center: {lat: 42.361145, lng: -71.057083},
+    mapTypeControl : false
   });
 
   polygons = [];
