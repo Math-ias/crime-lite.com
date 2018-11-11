@@ -90,10 +90,6 @@ function initMap() {
     map: map
   });*/
 
-  google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
-    document.getElementById('overlay').parentNode.removeChild(document.getElementById('overlay'));
-  });
-
 }
 
 function toggleCells() {
