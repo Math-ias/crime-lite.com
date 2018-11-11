@@ -1,8 +1,22 @@
-var map, heatmap;
+// This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+      var map, heatmap;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
+<<<<<<< HEAD
+          center: {lat: 37.775, lng: -122.434},
+          mapTypeId: 'satellite'
+        });
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(test),
+          map: map
+        });
+=======
           center: {lat: 42.361, lng: -71.057},
          //mapTypeIds: google.maps.MapTypeId.SATELLITE
          //mapTypeControlStyle: { style: DEFAULT},
@@ -48,6 +62,7 @@ var map, heatmap;
             map: map
           });
 
+>>>>>>> master
       }
 
       function toggleHeatmap() {
@@ -84,6 +99,18 @@ var map, heatmap;
 
      // Heatmap data: 500 Points
       // Heatmap data: 500 Points
+<<<<<<< HEAD
+      // Heatmap data: 500 Points
+      var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
+      var newa = [];
+
+      function getPoints(arrayInput) {
+        for (var i = 0; i < arrayInput.length; i = i + 2) {
+             newa[i]=  new google.maps.LatLng(arrayInput[i], arrayInput[i+1]);
+        }
+        return newa;
+      }
+=======
       var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
       var newa = [];
       
@@ -369,4 +396,8 @@ var map, heatmap;
 
       
       
+<<<<<<< HEAD
       
+=======
+>>>>>>> master
+>>>>>>> 7a93b973ecbccc11f535a6c2fc0086c20d4277ed
