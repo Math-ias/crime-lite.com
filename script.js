@@ -1,4 +1,10 @@
-var map, heatmap;
+
+// This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+      var map, heatmap, streetLightMap;
+
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -13,12 +19,32 @@ var map, heatmap;
 
         });
 
+
         heatmap = new google.maps.visualization.HeatmapLayer({
             data: getPoints(crimes),
             map: map
           });
         
 
+        var marker, i;
+
+
+	    for (i = 0; i < lights.length; i++) {
+		marker = new google.maps.Marker({
+			position: new google.maps.LatLng(lights[i], lights[i+1]),
+            map: map,
+            icon: 'pixel.png',
+		});
+
+		google.maps.event.addListener(marker, 'click', (function (marker, i) {
+			return function () {
+				infowindow.setContent(locations[i][0]);
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+	}
+
+       
          // Add a style-selector control to the map.
          var styleControl = document.getElementById('style-selector-control');
          map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
@@ -34,7 +60,9 @@ var map, heatmap;
 
          
 
+
       }
+
 
       function toggleHeatmap() {
         heatmap.setMap(heatmap.getMap() ? null : map);
@@ -70,15 +98,27 @@ var map, heatmap;
 
      // Heatmap data: 500 Points
       // Heatmap data: 500 Points
+
+
       var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
       var newa = [];
-      
+      var newb = [];
+
       function getPoints(arrayInput) {
         for (var i = 0; i < arrayInput.length; i = i + 2) {
              var thing =  new google.maps.LatLng(arrayInput[i], arrayInput[i+1]);
              newa.push(thing);
         }
         return newa;
+      }
+
+      function plotPoints(arrayInput) {
+
+        for (var i = 0; i < arrayInput.length; i = i + 2) {
+              var thing = new google.maps.LatLng(arrayInput[i], arrayInput[i+1]);
+              newb.push(thing);
+        }
+        return newb;
       }
 
 // Styles
@@ -209,5 +249,4 @@ var map, heatmap;
         ]
       };
 
-      
       
