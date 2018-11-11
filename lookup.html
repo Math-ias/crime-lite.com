@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Home | Crimelite</title>
+    <title>Lookup | Crimelite</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
@@ -30,14 +30,19 @@
         <div class="main">
             <div class="contents">
 
-                
-                <div id = "map"></div>
-
-                <script src = "script.js">
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_wuCRqJ5zvkLqyC1D0EM7fzgDlWMw5Cg&callback=initMap" async defer>
-                </script>
-
+                <div id="instructions">Instructions: Lookup an address for information about its safety</div>
+                <form id="address-form">
+                    <input type="textbox" id="address-input" value="96 The Fenway">
+                    <input type="button" id="address-submit" value="Look Up">
+                    <script src="lookup.js"></script>
+                    <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqwbkkPdWIwpmJ1TXOP-38zIOW5uahJAQ&callback=initMap">
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_wuCRqJ5zvkLqyC1D0EM7fzgDlWMw5Cg&callback=initMap" async defer>
+                    </script>
+                </form>
+                <div id = "maplookup"></div>
+                <p id="celldata"></p>
             </div>
         </div>
         <div class="footer">
