@@ -6,19 +6,18 @@ var map, heatmap;
           center: {lat: 42.361, lng: -71.057},
          //mapTypeIds: google.maps.MapTypeId.SATELLITE
          //mapTypeControlStyle: { style: DEFAULT},
-         mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.ROADMAP]},
+        // mapTypeControlOptions: { mapTypeIds: [google.maps.MapTypeId.ROADMAP]},
          mapTypeControl : false
          //disableDefaultUI: true
         // mapTypeControlStyle: {style: DROPDOWN_MENU}
 
         });
 
+        heatmap = new google.maps.visualization.HeatmapLayer({
+            data: getPoints(crimes),
+            map: map
+          });
         
-     //   heatmap = new google.maps.visualization.HeatmapLayer({
-     //    data: getPoints(),
-      //    map: google.maps.MapTypeId.SATELLITE
-      //  });
-
 
          // Add a style-selector control to the map.
          var styleControl = document.getElementById('style-selector-control');
@@ -32,6 +31,8 @@ var map, heatmap;
          styleSelector.addEventListener('change', function() {
            map.setOptions({styles: styles[styleSelector.value]});
          });
+
+         
 
       }
 
@@ -67,14 +68,17 @@ var map, heatmap;
         heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
       }
 
+     // Heatmap data: 500 Points
       // Heatmap data: 500 Points
-      function getPoints() {
-        return [
-          new google.maps.LatLng(37.782551, -122.445368),
-          new google.maps.LatLng(37.782745, -122.444586),
-         
-          new google.maps.LatLng(37.751266, -122.403355)
-        ];
+      var test = [37.759732, -122.406484,37.758910, -122.406228,37.758182, -122.405695,37.757676, -122.405118,37.757039, -122.404346,37.756335, -122.403719,37.755503, -122.403406,37.754665, -122.403242,37.753837, -122.403172,37.752986, -122.403112,37.751266, -122.403355];
+      var newa = [];
+      
+      function getPoints(arrayInput) {
+        for (var i = 0; i < arrayInput.length; i = i + 2) {
+             var thing =  new google.maps.LatLng(arrayInput[i], arrayInput[i+1]);
+             newa.push(thing);
+        }
+        return newa;
       }
 
 // Styles
@@ -189,7 +193,10 @@ var map, heatmap;
             featureType: 'water',
             elementType: 'labels.text.fill',
             stylers: [{color: '#92998d'}]
-          }
+          },
+          {heatmap: {
+            enabled: true
+          }}
         ],
 
         hiding: [
@@ -201,4 +208,6 @@ var map, heatmap;
           
         ]
       };
+
+      
       
