@@ -74,12 +74,28 @@ body {
 #map {
     height: 100%;
     width: 100%;
-  }
+}
+
+#mapcontainer {
+height: 30%;
+width: 75%;
+margin: 10px 10% 0 10%;
+}
+
+#maplookup {
+height: 100%;
+width: 100%;
+}
+
+#datadiv {
+}
+
 
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .logo-div {
@@ -107,7 +123,7 @@ html, body {
     margin: 0;
     width: 100px;
     height: 50%;
-    float: left;
+    float: right;
     text-align: center;
     vertical-align: middle;
 }
@@ -127,6 +143,31 @@ html, body {
     color: #808080;
       text-shadow: 0 7px 7px rgba(0, 0, 0, 0.5);
     }
+
+
+#instructions {
+    font-size: 110%;
+    margin: 0 10% 5px 10%;
+}
+
+#address-input {
+    width: 55%;
+    height: 25px;
+    margin: 0 0 0 10%;
+    padding: 4px 4px 4px 40px;
+    font-size: 110%;
+    color: gray;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: -2px -4px; 
+    background-repeat: no-repeat;
+}
+
+#address-submit {
+    margin: 5px 0 0 0;
+    width: 10%;
+    height: 30px;
+}
 
 /* Map Style Buttons */
 
@@ -174,3 +215,4 @@ html, body {
     top: 10px;
     z-index: 5;
   }
+
