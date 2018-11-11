@@ -34,15 +34,22 @@
                 <form id="address-form">
                     <input type="textbox" id="address-input" value="96 The Fenway">
                     <input type="button" id="address-submit" value="Look Up">
-                    <script src="lookup.js"></script>
-                    <script async defer
+                </form>
+                <div id = "mapcontainer">
+                    <div id="maplookup"></div>
+                    <div id = "datadiv">
+                        <p id="crimetag">Crime Levels</p>
+                        <p id="lighttag">Streetlamps Nearby</p>
+                    </div>
+                </div>
+                <script src="lookup.js"></script>
+                <script src="geohash.js"></script>
+                <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqwbkkPdWIwpmJ1TXOP-38zIOW5uahJAQ&callback=initMap">
                     </script>
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_wuCRqJ5zvkLqyC1D0EM7fzgDlWMw5Cg&callback=initMap" async defer>
                     </script>
-                </form>
-                <div id = "maplookup"></div>
-                <p id="celldata"></p>
+                
             </div>
         </div>
         <div class="footer">

@@ -1,7 +1,7 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('maplookup'), {
-          zoom: 8,
-          center: {lat: -34.397, lng: 150.644}
+          zoom: 17,
+          center: {lat: 42.341876, lng: -71.091273}
         });
         var geocoder = new google.maps.Geocoder();
 
@@ -19,6 +19,9 @@
               map: resultsMap,
               position: results[0].geometry.location
             });
+            var lon = results[0].geometry.location.lng();
+            var lat = results[0].geometry.location.lat();
+            document.getElementById("crimetag").innerHTML = encodeGeoHash(lat, lon);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
