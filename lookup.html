@@ -18,7 +18,7 @@
             </div>
             <div class="navigation">
                     <div class="navigation-div"><a href = "about.html">About Us</a></div>
-                    <div class="navigation-div" style="background-color: lightgray"><a href = "lookup.html">Lookup</a></div>
+                    <div class="navigation-div"><a href = "lookup.html">Lookup</a></div>
                     <div class="navigation-div"><a href = "index.html">Home</a></div>
                     <!--
                     
@@ -33,18 +33,20 @@
                 <div id="instructions">Instructions: Lookup an address for information about its safety</div>
                 <form id="address-form">
                     <input type="textbox" id="address-input" value="96 The Fenway"
-                    onkeydown="if (event.keyCode == 13) {document.getElementById('address-submit').click(); return false;}" />
+                    onkeydown="if (event.keyCode == 13) return false;" />
                     <input type="button" id="address-submit" value="Look Up">
                 </form>
                 <div id = "mapcontainer">
                     <div id="maplookup"></div>
                     <div id = "datadiv">
-                        <p id="data1"></p>
-                        <h2 id="info1"></h2>
-                        <p id="data2"></p>
-                        <h2 id="info2"></h2>
+                        <p id="crimetag">Geohash</p>
+                        <p id="lighttag">Data2</p>
                     </div>
                 </div>
+
+                <script src="lookup.js"></script>
+                <script src="geohash.js"></script>
+
                 <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqwbkkPdWIwpmJ1TXOP-38zIOW5uahJAQ&callback=initMap">
                     </script>
