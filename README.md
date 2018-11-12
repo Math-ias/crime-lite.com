@@ -42,7 +42,14 @@ Many more revisions including more data sets, streets, and more!
 
 ## Screenshots
 
-To see screenshots about the site, in case crime-lite.com goes down in the future, please go to this repo's wiki.
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-11%2009-57-10.png"></img>
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-12%2006-54-53.png"></img>
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-12%2006-54-00.png"></img>
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-12%2006-55-26.png"></img>
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-12%2006-56-00.png"></img>
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-12%2006-56-20.png"></img>
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-12%2006-56-43.png"></img>
+<img src="https://github.com/Math-ias/crime-lite.com/blob/master/Screenshot%20at%202018-11-12%2006-56-55.png"></img>
 
 ## How to build the site.
 
