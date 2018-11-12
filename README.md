@@ -40,6 +40,9 @@ How to learn with big data, how to convert from programming languages, multiple 
 
 Many more revisions including more data sets, streets, and more!
 
+## Screenshots
+
+To see screenshots about the site, in case crime-lite.com goes down in the future, please go to this repo's wiki.
 
 ## How to build the site.
 
